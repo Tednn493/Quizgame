@@ -4,52 +4,95 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Quiz game</title>
+  <title>quiz game</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 
-<body >
+<body>
   <div class="windowalign">
     <div class="gamewindow">
-      <div id="questionwindow" class="">
+      <!-- This is the first window -->
+      <div id="Amount-of-players" class="">
+        <div class="questionbox">
+          <h1 id="player-q" class="boldtitle is-size-1 has-text-dark "> Welcome to the quiz</h1>
+          </br>
+          <h3 id="playeramount" class="boldtitle is-size-3">How many players?</h3>
+        </div>
+        <div id="playerno" class="buttonpos">
+          <button id="p1but" class="button is-warning is-outlined">1 Player</button>
+          <button id="p2but" class="button is-primary is-outlined">2 Player</button>
+          <button id="p3but" class="button is-danger is-outlined">3 Player</button>
+          <button id="p4but" class="button is-info is-outlined">4 Player</button>
+        </div>
+      </div>
+
+      <!-- This is the second window-->
+      <div id="playerNames"  class="questionbox hidden">
+        <h1 class="boldtitle is-size-1 has-text-dark "> Player names</h1>
+        <div id="inputs" class="">
+          <div id=p1box>
+            <p>Player 1</p>
+            <input id="p1name" maxlength="8" class=""></input>
+          </div>
+          <div id="p2box" class="">
+            <p>Player 2</p>
+            <input id="p2name" maxlength="8" class=""></input>
+          </div>
+          <div id=p3box class="">
+            <p>Player 3</p>
+            <input id="p3name" maxlength="8" class=""></input>
+          </div>
+          <div id=p4box class="">
+            <p>Player 4</p>
+            <input id="p4name" maxlength="8" class=""></input>
+          </div>
+        </div>
+        <div id="startgame">
+          <button id="startbutton" class="button is-warning">START GAME!</button>
+        </div>
+      </div>
+
+
+      <!-- This is the third window -->
+      <div id="questionwindow" class="hidden">
         <div class="questionbox">
           <h1 id="round" class="boldtitle is-size-1 has-text-dark	"> ROUND 1</h1>
           </br>
-          <h3 id="playerTurn" class="boldtitle is-size-3">PLAYER1's turn...</h3>  
+          <h3 id="playerTurn" class="boldtitle is-size-3">PLAYER1's turn...</h3>
           <div id=question>
-            hello  
-          </div>   
+            hello
+          </div>
         </div>
-        
-        <div id="buttonbox" class="" >
+
+        <div class="buttonpos">
           <button id="button1" class="button is-warning is-outlined">Outlined</button>
           <button id="button2" class="button is-primary is-outlined">Outlined</button>
           <button id="button3" class="button is-danger is-outlined">Outlined</button>
           <button id="button4" class="button is-info is-outlined">Outlined</button>
 
-          
+
         </div>
-      </div> 
-        <div id="buttonDiv" class="hidden">
-          <button id=leaderButton class="button"> view leaderboard</button> 
-        </div>
-        <div id="leaderboard" class="hidden" >
-          <h1 class="boldtitle is-size-1 level-item"> LEADERBOARD</h1>
-          </br>
-          <div class="level">
+      </div>
+      <div id="buttonDiv" class="hidden">
+        <button id=leaderButton class="button"> view leaderboard</button>
+      </div>
+      <div id="leaderboard" class="hidden">
+        <h1 class="boldtitle is-size-1 level-item"> LEADERBOARD</h1>
+        </br>
+        <div class="level">
           <!-- Left side -->
-            <div class="level-left">
-              <div class="level-item">
-                <div class="content is-large ">
-                  <p id="name0"></p>
-                  <p id="name1"></p>
-                  <p id="name2"></p>
-                  <p id="name3"></p>
-                </div>
+          <div class="level-left">
+            <div class="level-item">
+              <div class="content is-large ">
+                <p id="name0"></p>
+                <p id="name1"></p>
+                <p id="name2"></p>
+                <p id="name3"></p>
               </div>
             </div>
+          </div>
 
           <!-- Right side -->
           <div class="level-right">
@@ -63,16 +106,15 @@
             </div>
           </div>
         </div>
-          
+
       </div>
-  </div>
-<script src="script.js" defer></script>
+    </div>
+    <script src="./script.js" defer></script>
 
 
 
-  
+
 </body>
 
 
 </html>
-

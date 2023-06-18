@@ -1,46 +1,111 @@
-let question=document.querySelector("#question")
+const question=document.querySelector("#question")
 const button_1=document.querySelector("#button1")
 const button_2=document.querySelector("#button2")
 const button_3=document.querySelector("#button3")
 const button_4=document.querySelector("#button4")
 const round=document.querySelector("#round")
 const playerTurn=document.querySelector("#playerTurn")
+const window1=document.querySelector('#Amount-of-players')
 let correctAnswer=""
 const questionWindow=document.querySelector("#questionwindow")
 const leaderButton=document.querySelector("#leaderButton")
 const divBut=document.querySelector("#buttonDiv")
 const leaderboard=document.querySelector("#leaderboard")
 var c_audio = new Audio('correct.mp3');
-var w_audio= new Audio('wrong.mp3')
+var w_audio= new Audio('wrong.mp3');
+const p2box=document.querySelector('#p2box')
+const p3box=document.querySelector('#p3box')
+const p4box=document.querySelector('#p4box')
+const p1button=document.querySelector('#p1but')
+const p2button=document.querySelector('#p2but')
+const p3button=document.querySelector('#p3but')
+const p4button=document.querySelector('#p4but')
+const window2=document.querySelector('#playerNames')
+const gobut=document.querySelector('#startbutton')
+const p1name=document.quer
 // player objects
 
+
 const player1 = {
-  name: "p1",
+  name: "",
   score: 0
 }
 
 const player2 = {
-  name: "p2",
+  name: "",
   score: 0
 }
 
 const player3 = {
-  name: "p3",
+  name: "",
   score: 0
 }
 
 const player4 = {
-  name: "p4",
+  name: "",
   score: 0
 }
 
-// array of players
 
-let allPlayers = [player1, player2, player3,player4];
-console.log(allPlayers[0].name)
+
+
+// array of players
+const allPlayers=[player1,player2,player3,player4]
+
 let x=1
 let y=0
 let z=1
+
+const letsgo = () => {
+  player1.name = document.getElementById("p1name").value
+  player2.name = document.getElementById("p2name").value
+  player3.name = document.getElementById("p3name").value
+  player4.name = document.getElementById("p4name").value
+  windowswap()
+}
+ const windowswap= () => {
+  getRandomQuestion_playerturn()
+  window2.classList.add("hidden")
+  questionWindow.classList.remove("hidden")
+ }
+
+const soloGame = (allPlayers) => {
+  allPlayers.pop()
+  allPlayers.pop()
+  allPlayers.pop()
+  window1.classList.add("hidden")
+  p2box.classList.add("hidden")
+  p3box.classList.add("hidden")
+  p4box.classList.add("hidden")
+  window2.classList.remove("hidden")
+  console.log(allPlayers)
+  
+}
+
+const duoGame = (allPlayers) => {
+  allPlayers.pop()
+  allPlayers.pop()
+  window1.classList.add("hidden")
+  p3box.classList.add("hidden")
+  p4box.classList.add("hidden")
+  window2.classList.remove("hidden")
+  console.log(allPlayers)
+}
+
+const trioGame = (allPlayers) => {
+  allPlayers.pop()
+  window1.classList.add("hidden")
+  p4box.classList.add("hidden")
+  window2.classList.remove("hidden")
+  console.log(allPlayers)
+}
+
+const quadGame = (allPlayers) => {
+  window1.classList.add("hidden")
+  window2.classList.remove("hidden")
+  console.log(allPlayers)
+}
+
 
 const checkAnswer_getQuestion = (ans) =>{
   if(ans===correctAnswer){
@@ -49,8 +114,8 @@ const checkAnswer_getQuestion = (ans) =>{
   }else{
     w_audio.play()
   }
-
-
+  
+  
   limit=allPlayers.length*10
   if (x<limit){
     y=y+1
@@ -75,10 +140,9 @@ const checkAnswer_getQuestion = (ans) =>{
 const get_leaderbutton = () => {
   questionWindow.classList.add("hidden")
   allPlayers.sort(compare_score);
-  allPlayers=allPlayers.reverse()
+  allPlayers.reverse()
   console.log(allPlayers)
   divBut.classList.remove("hidden")
-  
 }
 
 function compare_score( a, b )
@@ -92,6 +156,7 @@ function compare_score( a, b )
   return 0;
 }
 
+//shows the leaderboard
 function leaderboard_display()
   {
     divBut.classList.add("hidden")
@@ -136,7 +201,9 @@ const getRandomQuestion_playerturn = async () => {
 
 }
 
-getRandomQuestion_playerturn()
+
+
+gobut.addEventListener("click", e=> letsgo())
 
 button_1.addEventListener("click", e => checkAnswer_getQuestion(button_1.innerHTML));
 button_2.addEventListener("click", e => checkAnswer_getQuestion (button_2.innerHTML));
@@ -144,4 +211,7 @@ button_3.addEventListener("click", e => checkAnswer_getQuestion (button_3.innerH
 button_4.addEventListener("click", e => checkAnswer_getQuestion (button_4.innerHTML));
 leaderButton.addEventListener("click", e=> leaderboard_display())
 
-
+p1button.addEventListener("click", e=> soloGame(allPlayers))
+p2button.addEventListener("click", e=> duoGame(allPlayers))
+p3button.addEventListener("click", e=> trioGame(allPlayers))
+p4button.addEventListener("click", e=> quadGame(allPlayers))
